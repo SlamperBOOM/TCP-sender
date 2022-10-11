@@ -1,5 +1,6 @@
 import server.Server;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -8,7 +9,14 @@ public class Main {
             System.out.println("Please write port as argument");
             return;
         }
-        Server server = new Server(args[0]);
+
+        Server server;
+        try {
+            server = new Server(args[0]);
+        } catch (IOException e) {
+            System.out.println("Port is already in use. Exiting");
+            return;
+        }
         System.out.println("Write \"stop\" to stop the server");
         Scanner reader = new Scanner(System.in);
         while (true){

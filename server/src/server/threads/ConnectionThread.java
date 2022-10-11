@@ -10,14 +10,10 @@ public class ConnectionThread extends Thread{
     Boolean isRunning = true;
     Server server;
 
-    public ConnectionThread(Server server, int port){
+    public ConnectionThread(Server server, int port) throws IOException {
         this.server = server;
-        try {
-            socket = new ServerSocket(port);
-            socket.setSoTimeout(5000);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        socket = new ServerSocket(port);
+        socket.setSoTimeout(5000);
     }
 
     @Override
