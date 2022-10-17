@@ -2,14 +2,15 @@ package server;
 
 import server.threads.ConnectionThread;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class Server {
-    private ConnectionThread connectionThread;
-    private Clients clients;
-    private SpeedLogger logger;
+    private final ConnectionThread connectionThread;
+    private final Clients clients;
+    private final SpeedLogger logger;
 
-    public Server(String port){
+    public Server(String port) throws IOException {
         connectionThread = new ConnectionThread(this, Integer.parseInt(port));
         connectionThread.start();
         clients = new Clients();

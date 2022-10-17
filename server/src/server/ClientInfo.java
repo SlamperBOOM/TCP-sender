@@ -3,8 +3,8 @@ package server;
 import server.threads.ClientThread;
 
 public class ClientInfo {
-    private int ID;
-    private ClientThread thread;
+    private final int ID;
+    private final ClientThread thread;
 
     public ClientInfo(int ID, ClientThread thread){
         this.ID = ID;
